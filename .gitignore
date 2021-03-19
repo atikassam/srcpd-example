@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+_temp
+build
+node_modules
+yarn-error.log

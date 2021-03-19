@@ -1,0 +1,18 @@
+{
+  "name": "srpcd-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Atikur Rahman",
+  "license": "MIT",
+  "scripts": {
+    "build": "srpcdc build -e src/srpc.d/sample.prcd -b src/srpc_server -f src/srpc_client -g web",
+    "start": "node_modules/.bin/nodemon --exec 'ts-node' src/index.ts"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.7",
+    "srpcd": "^0.0.2-alpha",
+    "srpcdc": "0.0.24-alpha",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
