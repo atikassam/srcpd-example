@@ -30,14 +30,21 @@ declare class RpcProcessor {
     use(method: any): void;
     process(...args: any[]): void;
 }
+export declare type RpcErrorHandler = (e: any) => Promise<{
+    code: number;
+    message: string;
+    error: any;
+}>;
 declare class SrpcServer<SrpcClasses> {
     private implementations;
     private options?;
     private _map?;
     private _root?;
+    private errorHandler?;
     private get map();
     private get root();
     constructor(implementations: SrpcClasses);
+    setErrorHandler(fnc: RpcErrorHandler): void;
     private init;
     createServer(options?: {
         enable_cors: boolean;

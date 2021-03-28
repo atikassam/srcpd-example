@@ -1,5 +1,5 @@
 import React, {Component, createContext, FormEvent, useContext, useState} from "react";
-import {Button, Container, Grid, Link, TextField} from "@material-ui/core";
+import {Button, Container, Grid, Link, TextField, Typography} from "@material-ui/core";
 import {AccessToken, AuthService, AuthServiceClient, DriveService, DriveServiceClient} from "srpcd-example-http-client";
 import {Redirect} from "react-router-dom";
 
@@ -62,7 +62,8 @@ export function Register() {
     auth.register({
       name,
       email
-    }, password).then(() => forceUpdate());
+    }, password)
+      .then(() => forceUpdate())
   }
 
   if (isLoggedIn()) return <Redirect path="/" to={'/drive'}/>;
@@ -92,6 +93,7 @@ export function Register() {
 }
 
 export function Login() {
+  const [ error, setError ] = useState();
   const {auth} = useService();
   const forceUpdate = useForceUpdate();
 
@@ -103,7 +105,8 @@ export function Login() {
 
     auth.login(email, password)
       .then((token) => localStorage.setItem('access_token', JSON.stringify(token)))
-      .then(() => forceUpdate());
+      .then(() => forceUpdate())
+      .catch(({ message }) => setError(message));
   }
 
   if (isLoggedIn()) return <Redirect path="/" to={'/drive'}/>;
@@ -112,6 +115,11 @@ export function Login() {
     <form onSubmit={login} action="">
 
       <Grid style={{ height: '100vh' }} container direction={"column"} justify={"center"} spacing={2}>
+        {
+          error && <Grid item>
+           <Typography variant={"body1"} color={"error"}>{ error }</Typography>
+          </Grid>
+        }
         <Grid item>
           <TextField name={'email'} fullWidth label={'Email'} variant={"outlined"}/>
         </Grid>
@@ -120,6 +128,9 @@ export function Login() {
         </Grid>
         <Grid item>
           <Button fullWidth variant={"contained"} color={"primary"} type={"submit"}>Login</Button>
+        </Grid>
+        <Grid item>
+          <Link href={'/register'}>register</Link>
         </Grid>
       </Grid>
     </form>

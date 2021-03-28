@@ -4154,10 +4154,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-srpcd@0.1.18-alpha:
-  version "0.1.18-alpha"
-  resolved "https://registry.yarnpkg.com/srpcd/-/srpcd-0.1.18-alpha.tgz#41a7302b4e2002220354c34ce442a9900c3a64a8"
-  integrity sha512-p0YlGUrpf28W2dasU8UF9YzF3qbC45Ce2clwBaMjUL6nM+frStlp2H+d17Nu1OLjmWs8c2xhTa0xVp/D1I+R3Q==
+srpcd@0.1.20-alpha:
+  version "0.1.20-alpha"
+  resolved "https://registry.yarnpkg.com/srpcd/-/srpcd-0.1.20-alpha.tgz#82abffe37c13f410d6ab10fdcbc4e6db9f503a0a"
+  integrity sha512-MHVYXpaHuld0PZxwT/GOJPujbm2i9cdCSVsUGPYF4kJrVmoddPfbTgHq2pBsJ8UtJLIug6cyoq2SH90rIjdFkw==
   dependencies:
     "-" "^0.0.1"
     "@rollup/plugin-commonjs" "^17.1.0"
