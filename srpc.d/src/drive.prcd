@@ -10,13 +10,14 @@ data CreateConversationArg {
 
 class Conversation {
   // state CreateConversationArg
+
   getMessages(): CreateConversationArg
   getMessageCount(): int
   sendMessage(): CreateConversationArg[]
 }
-
 class Conversation1 {
   // state CreateConversationArg
+
   getMessages(): CreateConversationArg[]
   getMessageCount(): string[]
   sendMessage(): CreateConversationArg
@@ -28,11 +29,11 @@ class Message {
   sendMessage(): CreateConversationArg
 }
 
-class Chat {
+class DriveServiceImpl {
   deleteConversation(id: string): string
   setName(name: string): string[]
-  getConversationById(id: string): CreateConversationArg[]
-  getConversations(): CreateConversationArg
+  getConversationById(id: string): CreateConversationArg
+  getConversations(): CreateConversationArg[]
   getConversationCount(): CreateConversationArg
   createConversation(userId: string): CreateConversationArg
 }

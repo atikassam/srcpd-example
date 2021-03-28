@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "nodemon": "^2.0.7",
-    "srpcd": "^0.0.2-alpha",
-    "srpcdc": "0.0.24-alpha",
+    "srpcd": "0.1.2-alpha",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   }

@@ -1260,12 +1260,7 @@ decamelize@^1.1.1:
 
 "declaration-bundler-webpack-plugin@git+https://github.com/smol/declaration-bundler-webpack-plugin.git":
   version "1.0.0"
-  uid "91bbfa5feb9136c4d91c443df63cee9a8439421b"
   resolved "git+https://github.com/smol/declaration-bundler-webpack-plugin.git#91bbfa5feb9136c4d91c443df63cee9a8439421b"
-
-"declaration-bundler-webpack-plugin@https://github.com/smol/declaration-bundler-webpack-plugin.git":
-  version "1.0.0"
-  resolved "https://github.com/smol/declaration-bundler-webpack-plugin.git#91bbfa5feb9136c4d91c443df63cee9a8439421b"
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -4159,44 +4154,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-srpcd@^0.0.2-alpha:
-  version "0.0.2-alpha"
-  resolved "https://registry.yarnpkg.com/srpcd/-/srpcd-0.0.2-alpha.tgz#5254989c6bf1bffbdae9eb1472b71038315df84c"
-  integrity sha512-HKnG+dZcj9988EUihEMdmdgs+PmVELJelfDV2Xb9BsIT8bnGLyR5PruvMM7cH0ZvlhXxtygMcmqTKVnagHFJgw==
-  dependencies:
-    "@rollup/plugin-commonjs" "^17.1.0"
-    "@rollup/plugin-json" "^4.1.0"
-    "@rollup/plugin-node-resolve" "^11.2.0"
-    "@rollup/plugin-typescript" "^8.2.0"
-    "@types/busboy" "^0.2.3"
-    "@types/formidable" "^1.0.32"
-    "@types/shelljs" "^0.8.8"
-    "@types/tmp" "^0.2.0"
-    axios "^0.21.1"
-    busboy "^0.3.1"
-    commander "^7.1.0"
-    declaration-bundler-webpack-plugin "https://github.com/smol/declaration-bundler-webpack-plugin.git"
-    form-data "^4.0.0"
-    formidable "^1.2.2"
-    lodash.camelcase "^4.3.0"
-    nearley "^2.20.1"
-    ohm-js "^15.4.1"
-    protobufjs "^6.10.2"
-    rollup "^2.41.0"
-    rollup-plugin-commonjs "^10.1.0"
-    rollup-plugin-json "^4.0.0"
-    rollup-plugin-node-resolve "^5.2.0"
-    rollup-plugin-sourcemaps "^0.6.3"
-    rollup-plugin-typescript2 "^0.30.0"
-    shelljs "^0.8.4"
-    tmp "^0.2.1"
-    ts-loader "^8.0.17"
-    uglify-js "^3.13.0"
-
-srpcdc@0.0.24-alpha:
-  version "0.0.24-alpha"
-  resolved "https://registry.yarnpkg.com/srpcdc/-/srpcdc-0.0.24-alpha.tgz#d3806df21fcf15edc9955684c578f984cecdde3f"
-  integrity sha512-HoKCi7hmpTGzRTo441QC2CSeeyEJiM8P2R8pOBTjJsbagOzfXHiIHsx12oU9ELgE5N55cMJxrdrsn82udJg3+g==
+srpcd@0.1.2-alpha:
+  version "0.1.2-alpha"
+  resolved "https://registry.yarnpkg.com/srpcd/-/srpcd-0.1.2-alpha.tgz#f1e69a2b04ec1149b6d3c575ed7510677a70a342"
+  integrity sha512-xgMuotuTFiP7AyXGquEf4IslE07zO08AUs5nWzDucanzh37tx9QW3NiEojNCKt8AxzISeDRHJBvJPKnAuYc2Ag==
   dependencies:
     "-" "^0.0.1"
     "@rollup/plugin-commonjs" "^17.1.0"

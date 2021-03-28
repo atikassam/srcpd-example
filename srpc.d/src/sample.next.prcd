@@ -29,7 +29,7 @@ class Message {
   sendMessage(): CreateConversationArg
 }
 
-class ChatImpl {
+class DriveServiceImpl {
   deleteConversation(id: string): string
   setName(name: string): string[]
   getConversationById(id: string): CreateConversationArg

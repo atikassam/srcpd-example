@@ -1,5 +1,5 @@
 .DS_Store
-.idea
+../.idea
 _temp
 build
 node_modules
