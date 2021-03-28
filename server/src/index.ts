@@ -1,11 +1,27 @@
-import { DriveServiceServer } from "./srpc_server/rpc.server.bundle";
+import {AuthServiceSrpc, DriveServiceSrpc, SecureClass } from "./srpc.d/rpc.server.bundle";
+import {DriveFileImpl} from "./impls/DriveFileImpl";
 import {DriveServiceImpl} from "./impls/DriveServiceImpl";
-import {FileImpl} from "./impls/FileImpl";
+import {AuthServiceImpl} from "./impls/AuthServiceImpl";
+import {SecureClassImpl} from "./impls/SecureClassImpl";
+import * as express from 'express';
 
-const service = new DriveServiceServer({
-  File: FileImpl,
-  DriveService: DriveServiceImpl
-});
+const classes = {
+  DriveService: DriveServiceImpl,
+  AuthService: AuthServiceImpl,
+  DriveFile: DriveFileImpl,
+  SecureClass: SecureClassImpl
+};
 
-service.createServer({ enable_cors: true })
-  .listen(9090);
+const drive_service = new DriveServiceSrpc(classes);
+drive_service.createServer({ enable_cors: true })
+  .listen(9000);
+
+const auth_service = new AuthServiceSrpc(classes);
+auth_service.createServer({ enable_cors: true })
+  .listen(9001);
+
+// const app = express()
+//
+// app.use('/drive', drive_service.useExpressHandler)
+// app.use('/auth', auth_service.useExpressHandler)
+// app.listen(9003)

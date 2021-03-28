@@ -1,26 +1,15 @@
-import {AccessToken, AuthService, DriveFile, User} from '../srpc.d/rpc.server.bundle'
+import {SecureClass} from '../srpc.d/rpc.server.bundle'
+import {decode, verify} from "jsonwebtoken";
+import {jwt_secret} from "./AuthServiceImpl";
 
-export class AuthServiceImpl extends AuthService {
-  register(user: User, password: string): Promise<User> {
-    return Promise.resolve(undefined);
-  }
-  verify(username: string, otp: string): Promise<User> {
-    return Promise.resolve(undefined);
-  }
-  login(username: string, password: string): Promise<AccessToken> {
-    return Promise.resolve(undefined);
-  }
-  forgotPassword(username: string): Promise<boolean> {
-    return Promise.resolve(false);
-  }
+export class SecureClassImpl extends SecureClass {
+  async intercept(): Promise<any> {
+    const token = this.ctx.headers.authorization.replace(/bearer/ig, '').trim();
 
-  resetPassword(username: string, password: string, otp: string): Promise<User> {
-    return Promise.resolve(undefined);
-  }
-  refreshSession(access: AccessToken): Promise<AccessToken> {
-    return Promise.resolve(undefined);
-  }
-  isValidSession(access: AccessToken): Promise<boolean> {
-    return Promise.resolve(false);
+    try {
+      this.ctx.user = verify(token, jwt_secret);
+    } catch (e) {
+      throw e;
+    }
   }
 }

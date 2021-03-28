@@ -5,13 +5,17 @@
   "author": "Atikur Rahman",
   "license": "MIT",
   "scripts": {
-    "build": "../node_modules/.bin/srpcdc build -e src/srpc.d/sample.prcd -b src/srpc_server -f src/srpc_client -g web",
-    "start": "../node_modules/.bin/nodemon --exec 'ts-node' src/index.ts"
+    "build": "node_modules/.bin/srpcd build -e src/drive.prcd -b ../server/src/srpc.d -f ../http-client/ -g web",
+    "build:w": "node_modules/.bin/nodemon -e prcd --exec 'yarn' build",
+    "start": "node_modules/.bin/nodemon --exec 'ts-node' src/index.ts"
   },
   "dependencies": {
     "nodemon": "^2.0.7",
-    "srpcd": "0.1.2-alpha",
+    "srpcd": "0.1.18-alpha",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
+  },
+  "devDependencies": {
+    "yarn": "^1.22.10"
   }
 }

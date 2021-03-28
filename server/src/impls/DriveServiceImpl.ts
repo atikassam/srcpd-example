@@ -1,11 +1,16 @@
-import {DriveService, File} from "../srpc_server/rpc.server.bundle";
-import {FileImpl} from "./FileImpl";
+import {DriveFileImpl} from "./DriveFileImpl";
+import {DriveService, DriveFile} from "../srpc.d/rpc.server.bundle";
+import * as path from "path";
 
 export class DriveServiceImpl extends DriveService {
-  async rootFolder(): Promise<File> {
-    return new FileImpl({
+  async rootFolder(): Promise<DriveFile> {
+    return new DriveFileImpl({
+      id: '',
       name: 'root',
-      directory: true
+      path: path.resolve(__dirname, '_temp'),
+      // path: '',
+      directory: true,
+      size: 0,
     })
   }
 }
