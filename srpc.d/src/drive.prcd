@@ -1,5 +1,4 @@
-version 0.1
-package com.linowis
+package drive
 
 // Auth Section
 data User {
@@ -12,6 +11,7 @@ data AccessToken {
 }
 
 service class AuthService {
+    remove(): boolean
     register(user: User, password: string): User
     login(username: string, password: string): AccessToken
     forgotPassword(username: string): boolean
@@ -42,9 +42,11 @@ class DriveFile {
     path(): string
     remove(): boolean
     files(): DriveFile[]
+    getFilename(): string
 }
 
 @SecureClass()
 service class DriveService {
     rootFolder(): DriveFile
+    getDetails(): DriveFileDetails[]
 }

@@ -1,10 +1,17 @@
-import {AccessToken, AuthService, DriveFile, User} from '../srpc.d/rpc.server.bundle'
 import * as jwt from 'jsonwebtoken';
+import {drive} from "../srpc.d/rpc.server.bundle";
+import User = drive.User;
+import AuthService = drive.AuthService;
+import AccessToken = drive.AccessToken;
 
 const users: Map<string, (User & { password: string })> = new Map<string, User & {password: string}>();
 export const jwt_secret = 'my_secret';
 
 export class AuthServiceImpl extends AuthService {
+  remove(): Promise<boolean> {
+    return Promise.resolve(false);
+  }
+
   async register(user: User, password: string): Promise<User> {
     users.set(user.email, { ...user, password });
 

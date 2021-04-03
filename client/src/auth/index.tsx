@@ -1,9 +1,9 @@
 import React, {Component, createContext, FormEvent, useContext, useState} from "react";
 import {Button, Container, Grid, Link, TextField, Typography} from "@material-ui/core";
-import {AccessToken, AuthService, AuthServiceClient, DriveService, DriveServiceClient} from "srpcd-example-http-client";
+import { drive } from "srpcd-example-http-client";
 import {Redirect} from "react-router-dom";
 
-export const ServiceCtx = createContext<{ auth: AuthService, drive: DriveService }>({} as any)
+export const ServiceCtx = createContext<{ auth: drive.AuthService, drive: drive.DriveService }>({} as any)
 export const useService = () => useContext(ServiceCtx);
 export const isLoggedIn = () => !!localStorage.getItem('access_token');
 
@@ -17,20 +17,20 @@ export class ServiceProvider extends Component<any, any> {
   async componentDidMount() {
     const headers = () => {
       const token_str = localStorage.getItem('access_token');
-      const token = token_str && JSON.parse(token_str) as AccessToken
+      const token = token_str && JSON.parse(token_str) as drive.AccessToken
       return token ? {
         'Authorization': `bearer ${token.jwt}`,
         'Content-Type': 'application/json'
       } : undefined
     }
 
-    const auth = await new AuthServiceClient('http://localhost:9000', {}).init()
-    const drive = await new DriveServiceClient('http://localhost:9001', headers).init()
+    const auth = await new drive.AuthServiceClient('http://localhost:9000', {}).init()
+    const _drive = await new drive.DriveServiceClient('http://localhost:9001', headers).init()
     //
     // const auth = await new AuthServiceClient('http://localhost:9000/auth', {}).init()
     // const drive = await new DriveServiceClient('http://localhost:9000/drive', headers).init()
 
-    this.setState({auth, drive})
+    this.setState({auth, drive: _drive })
   }
 
   render() {

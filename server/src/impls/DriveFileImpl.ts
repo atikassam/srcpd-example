@@ -1,8 +1,13 @@
-import {DriveFile} from '../srpc.d/rpc.server.bundle'
 import * as uuid from 'uuid'
 import * as faker from 'faker'
+import {drive} from "../srpc.d/rpc.server.bundle";
+import DriveFile = drive.DriveFile;
 
 export class DriveFileImpl extends DriveFile {
+  async getFilename() {
+    return 'Demo session'
+  }
+
   rename(name: string): Promise<boolean> {
     return Promise.resolve(false);
   }

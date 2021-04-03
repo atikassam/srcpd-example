@@ -2,8 +2,6 @@
 import * as protobufjs from 'protobufjs';
 import * as http from "http";
 import { IncomingMessage, ServerResponse } from "http";
-interface EmptyClassData {
-}
 export interface SrpcServerOptions {
     enable_cors: boolean;
 }
@@ -68,69 +66,78 @@ declare class SrpcServer<SrpcClasses> {
     private _getMethodMetadata;
     private _getDataType;
 }
-export interface User {
-    name: string;
-    email: string;
-}
-export interface AccessToken {
-    jwt: string;
-}
-export declare abstract class AuthService {
-    protected getCtx(): any;
-    private $___class_state;
-    constructor(data: EmptyClassData);
-    getData(): EmptyClassData;
-    updateData(data: Partial<EmptyClassData>): void;
-    abstract register(user: User, password: string): Promise<User>;
-    abstract login(username: string, password: string): Promise<AccessToken>;
-    abstract forgotPassword(username: string): Promise<boolean>;
-    abstract resetPassword(username: string, password: string, otp: string): Promise<User>;
-    abstract verify(username: string, otp: string): Promise<User>;
-    abstract isValidSession(access: AccessToken): Promise<boolean>;
-    abstract refreshSession(access: AccessToken): Promise<AccessToken>;
-}
-export declare class AuthServiceSrpc extends SrpcServer<SrpcClasses> {
-    constructor(classes: SrpcClasses);
-}
-export declare abstract class SecureClass {
-    protected ctx: RpcProcessCtx;
-    constructor(ctx: RpcProcessCtx);
-    abstract intercept(): Promise<any>;
-}
-export interface DriveFileDetails {
-    id: string;
-    name: string;
-    path: string;
-    directory: boolean;
-    size: number;
-}
-export declare abstract class DriveFile {
-    protected getCtx(): any;
-    private $___class_state;
-    constructor(data: DriveFileDetails);
-    getData(): DriveFileDetails;
-    updateData(data: Partial<DriveFileDetails>): void;
-    abstract rename(name: string): Promise<boolean>;
-    abstract move(dest: string): Promise<boolean>;
-    abstract path(): Promise<string>;
-    abstract remove(): Promise<boolean>;
-    abstract files(): Promise<DriveFile[]>;
-}
-export declare abstract class DriveService {
-    protected getCtx(): any;
-    private $___class_state;
-    constructor(data: EmptyClassData);
-    getData(): EmptyClassData;
-    updateData(data: Partial<EmptyClassData>): void;
-    abstract rootFolder(): Promise<DriveFile>;
-}
-export declare class DriveServiceSrpc extends SrpcServer<SrpcClasses> {
-    constructor(classes: SrpcClasses);
-}
 interface SrpcClasses {
-    AuthService: typeof AuthService;
-    SecureClass: typeof SecureClass;
-    DriveFile: typeof DriveFile;
-    DriveService: typeof DriveService;
+    'drive.AuthService': typeof drive.AuthService;
+    'drive.SecureClass': typeof drive.SecureClass;
+    'drive.DriveFile': typeof drive.DriveFile;
+    'drive.DriveService': typeof drive.DriveService;
+}
+export declare namespace io.srpcd.types {
+    interface EmptyClassData {
+    }
+}
+export declare namespace drive {
+    interface User {
+        name: string;
+        email: string;
+    }
+    interface AccessToken {
+        jwt: string;
+    }
+    abstract class AuthService {
+        protected getCtx(): any;
+        private $___class_state;
+        constructor(data: io.srpcd.types.EmptyClassData);
+        getData(): io.srpcd.types.EmptyClassData;
+        updateData(data: Partial<io.srpcd.types.EmptyClassData>): void;
+        abstract remove(): Promise<boolean>;
+        abstract register(user: drive.User, password: string): Promise<drive.User>;
+        abstract login(username: string, password: string): Promise<drive.AccessToken>;
+        abstract forgotPassword(username: string): Promise<boolean>;
+        abstract resetPassword(username: string, password: string, otp: string): Promise<drive.User>;
+        abstract verify(username: string, otp: string): Promise<drive.User>;
+        abstract isValidSession(access: drive.AccessToken): Promise<boolean>;
+        abstract refreshSession(access: drive.AccessToken): Promise<drive.AccessToken>;
+    }
+    class AuthServiceSrpc extends SrpcServer<SrpcClasses> {
+        constructor(classes: SrpcClasses);
+    }
+    abstract class SecureClass {
+        protected ctx: RpcProcessCtx;
+        constructor(ctx: RpcProcessCtx);
+        abstract intercept(): Promise<any>;
+    }
+    interface DriveFileDetails {
+        id: string;
+        name: string;
+        path: string;
+        directory: boolean;
+        size: number;
+    }
+    abstract class DriveFile {
+        protected getCtx(): any;
+        private $___class_state;
+        constructor(data: drive.DriveFileDetails);
+        getData(): DriveFileDetails;
+        updateData(data: Partial<drive.DriveFileDetails>): void;
+        abstract rename(name: string): Promise<boolean>;
+        abstract move(dest: string): Promise<boolean>;
+        abstract path(): Promise<string>;
+        abstract remove(): Promise<boolean>;
+        abstract files(): Promise<drive.DriveFile[]>;
+        abstract getFilename(): Promise<string>;
+    }
+    abstract class DriveService {
+        protected getCtx(): any;
+        private $___class_state;
+        constructor(data: io.srpcd.types.EmptyClassData);
+        getData(): io.srpcd.types.EmptyClassData;
+        updateData(data: Partial<io.srpcd.types.EmptyClassData>): void;
+        abstract rootFolder(): Promise<drive.DriveFile>;
+        abstract getDetails(): Promise<drive.DriveFileDetails[]>;
+    }
+    class DriveServiceSrpc extends SrpcServer<SrpcClasses> {
+        constructor(classes: SrpcClasses);
+    }
 }
 export {};

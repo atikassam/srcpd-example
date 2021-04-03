@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "nodemon": "^2.0.7",
-    "srpcd": "0.1.20-alpha",
+    "srpcd": "0.1.25-alpha",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   },

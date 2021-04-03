@@ -15,20 +15,21 @@ import {
   Toolbar,
   Typography
 } from "@material-ui/core";
-import {DriveFile, DriveFileDetails} from "srpcd-example-http-client";
+import { drive } from "srpcd-example-http-client";
 import {isLoggedIn, useService} from "../auth";
 import {Redirect} from "react-router-dom";
 import FolderIcon from '@material-ui/icons/Folder';
 
 export function Drive() {
   const {drive} = useService();
-  const [navigation, setNavigation] = useState<DriveFile[]>([]);
-  const [cd, setCd] = useState<DriveFile>();
-  const [files, setFiles] = useState<DriveFile[]>([]);
+  const [navigation, setNavigation] = useState<drive.DriveFile[]>([]);
+  const [cd, setCd] = useState<drive.DriveFile>();
+  const [files, setFiles] = useState<drive.DriveFile[]>([]);
 
   useEffect(() => {
     if (!cd) return
 
+    cd.getFilename().then(console.log)
     cd.files().then(files => {
       setFiles(files)
     })
@@ -39,9 +40,10 @@ export function Drive() {
       .then(async root => {
         setCd(root)
       })
+    drive.getDetails().then(console.log)
   }, [])
 
-  const open = (file: DriveFile) => {
+  const open = (file: drive.DriveFile) => {
     if (cd) setNavigation([ ...(navigation || []), cd ])
     setCd(file);
   }
@@ -81,9 +83,9 @@ export function Drive() {
   </>
 }
 
-export function FileComponent({file, onClick }: { onClick: any, file: DriveFile }) {
+export function FileComponent({file, onClick }: { onClick: any, file: drive.DriveFile }) {
   const {drive} = useService();
-  const [data, setData] = useState<DriveFileDetails>();
+  const [data, setData] = useState<drive.DriveFileDetails>();
 
   useEffect(() => {
     setData(file.getData())

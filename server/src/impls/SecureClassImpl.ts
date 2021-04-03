@@ -1,6 +1,7 @@
-import {SecureClass} from '../srpc.d/rpc.server.bundle'
-import {decode, verify} from "jsonwebtoken";
+import {verify} from "jsonwebtoken";
 import {jwt_secret} from "./AuthServiceImpl";
+import {drive} from "../srpc.d/rpc.server.bundle";
+import SecureClass = drive.SecureClass;
 
 export class SecureClassImpl extends SecureClass {
   async intercept(): Promise<any> {
